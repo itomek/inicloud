@@ -1,4 +1,4 @@
-// In-memory storage for demo (replace with localStorage in your environment)
+// Local storage for persistent checkbox state
 let checkboxState = {};
 
 // DOM elements
@@ -48,25 +48,18 @@ function loadCheckboxes() {
 
 function saveCheckboxState(checkboxId, isChecked) {
     checkboxState[checkboxId] = isChecked;
-
-    // For your environment, replace the above line with:
-    // localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
+    localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
 }
 
 function loadCheckboxState() {
-    // For your environment, replace the return statement with:
-    // const saved = localStorage.getItem('checkboxState');
-    // return saved ? JSON.parse(saved) : {};
-
-    return checkboxState;
+    const saved = localStorage.getItem('checkboxState');
+    return saved ? JSON.parse(saved) : {};
 }
 
 function resetAll() {
-    // Clear in-memory state
+    // Clear localStorage state
     checkboxState = {};
-
-    // For your environment, also add:
-    // localStorage.removeItem('checkboxState');
+    localStorage.removeItem('checkboxState');
 
     // Uncheck all visible checkboxes
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');

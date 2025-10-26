@@ -1,0 +1,26 @@
+/**
+ * Header Component
+ * Page header with title and description
+ */
+
+.header {
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+
+.header-title {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-subtitle {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Size - IniCloud9</title>
+  
+  <!-- Prevent theme flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('inicloud9-theme') || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  
+  <!-- Inherit root styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .window-size-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      padding: 2rem;
+    }
+
+    .window-size-display {
+      font-family: var(--font-mono);
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--accent-cyan-bright);
+      text-shadow: 0 0 20px var(--glow-cyan-strong);
+      letter-spacing: var(--tracking-wide);
+      margin-bottom: 2rem;
+      transition: all var(--transition-base);
+    }
+
+    .window-size-label {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: 0.5rem;
+    }
+
+    .dimensions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .dimension-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .dimension-label {
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: 0.5rem;
+    }
+
+    .dimension-value {
+      font-family: var(--font-mono);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-semibold);
+      color: var(--accent-cyan);
+    }
+
+    @media (min-width: 768px) {
+      .window-size-display {
+        font-size: 6rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .window-size-display {
+        font-size: 2.5rem;
+      }
+      
+      .dimensions-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Inherit root navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="/" class="navbar-brand">
+          <span class="text-terminal">$</span>
+          <span class="font-mono">IniCloud9</span>
+        </a>
+        <div class="navbar-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="window-size-container">
+      <div class="window-size-label">Browser Window Size</div>
+      <div class="window-size-display" id="windowSize">
+        <span id="width">0</span> × <span id="height">0</span>
+      </div>
+      
+      <div class="dimensions-grid">
+        <div class="dimension-card">
+          <div class="dimension-label">Width</div>
+          <div class="dimension-value" id="widthValue">0</div>
+          <div class="dimension-label" style="margin-top: 0.5rem; opacity: 0.6;">pixels</div>
+        </div>
+        <div class="dimension-card">
+          <div class="dimension-label">Height</div>
+          <div class="dimension-value" id="heightValue">0</div>
+          <div class="dimension-label" style="margin-top: 0.5rem; opacity: 0.6;">pixels</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Inherit root scripts -->
+  <script src="/js/theme-manager.js"></script>
+  <script>
+    // Update window size display
+    function updateWindowSize() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      document.getElementById('width').textContent = width;
+      document.getElementById('height').textContent = height;
+      document.getElementById('widthValue').textContent = width;
+      document.getElementById('heightValue').textContent = height;
+    }
+
+    // Update on load
+    updateWindowSize();
+
+    // Update on resize
+    window.addEventListener('resize', updateWindowSize);
+  </script>
+</body>
+</html>

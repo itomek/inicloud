@@ -1,0 +1,37 @@
+/**
+ * Input Component
+ * Form inputs and controls
+ */
+
+.input {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--glow-cyan);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-sm {
+  padding: 0.5rem 0.875rem;
+  font-size: var(--text-sm);
+}
+
+.input-lg {
+  padding: 0.875rem 1.25rem;
+  font-size: var(--text-lg);
+}

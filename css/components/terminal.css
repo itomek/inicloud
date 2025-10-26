@@ -1,0 +1,76 @@
+/**
+ * Terminal Component
+ * Terminal-style code display
+ */
+
+.terminal {
+  font-family: var(--font-mono);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.terminal-header {
+  background: var(--bg-secondary);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+}
+
+.terminal-dot:nth-child(1) { background: var(--error); }
+.terminal-dot:nth-child(2) { background: var(--warning); }
+.terminal-dot:nth-child(3) { background: var(--success); }
+
+.terminal-title {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.terminal-content {
+  padding: 1rem;
+  color: var(--accent-cyan);
+  line-height: var(--leading-relaxed);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.terminal-line {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.terminal-prompt {
+  color: var(--terminal-green);
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.terminal-prompt::before {
+  content: '$ ';
+}
+
+.terminal-output {
+  color: var(--text-primary);
+}
+
+.terminal-error {
+  color: var(--error);
+}
+
+.terminal-success {
+  color: var(--success);
+}

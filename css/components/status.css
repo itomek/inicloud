@@ -1,0 +1,37 @@
+/**
+ * Status Indicator Component
+ * Animated status dots
+ */
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-online {
+  background: var(--success);
+  box-shadow: 0 0 10px var(--success);
+}
+
+.status-offline {
+  background: var(--text-tertiary);
+  animation: none;
+}
+
+.status-warning {
+  background: var(--warning);
+  box-shadow: 0 0 10px var(--warning);
+}
+
+.status-error {
+  background: var(--error);
+  box-shadow: 0 0 10px var(--error);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.95); }
+}
